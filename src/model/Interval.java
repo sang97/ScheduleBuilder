@@ -14,10 +14,10 @@ package model;
 
 
 public class Interval implements Comparable<Interval> {
-    int startTime;
-    int endTime;
+    Integer startTime;
+    Integer endTime;
     
-    public Interval(int start, int end) {
+    public Interval(Integer start, Integer end) {
         
         startTime = start;
         endTime = end;
@@ -27,5 +27,42 @@ public class Interval implements Comparable<Interval> {
     public int compareTo(Interval other) {
         return this.startTime - other.startTime;
     }
+    
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((endTime == null) ? 0 : endTime.hashCode());
+        result = prime * result + ((startTime == null)
+            ? 0
+            : startTime.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Interval other = (Interval)obj;
+        if (endTime == null) {
+            if (other.endTime != null)
+                return false;
+        }
+        else if (!endTime.equals(other.endTime))
+            return false;
+        if (startTime == null) {
+            if (other.startTime != null)
+                return false;
+        }
+        else if (!startTime.equals(other.startTime))
+            return false;
+        return true;
+    }
+    
+    
     
 }

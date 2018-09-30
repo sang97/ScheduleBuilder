@@ -33,7 +33,7 @@ public class Instructor {
     public String getName() {
         return name;
     }
-
+    
 
     public void setName(String name) {
         this.name = name;
@@ -100,7 +100,7 @@ public class Instructor {
             return false;
         Instructor instructor = (Instructor) obj;
         
-        return name.equals(instructor.getName());
+        return name.equals(instructor.getName()) && description.equals(instructor.getDescription());
     }
     
 }

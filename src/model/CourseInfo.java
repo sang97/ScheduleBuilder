@@ -6,7 +6,6 @@ public class CourseInfo {
     private Integer creditHours;
     
     public CourseInfo() {
-        this(null, null, null);
     }
     
     public CourseInfo(String courseName, String courseTitle, Integer courseCreditHours) {

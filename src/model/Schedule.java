@@ -5,18 +5,22 @@ public class Schedule {
     // key is day in a week
     // value is a tree map where we keep track of start and end time of an
     // event so that none of them is duplicated
-    HashMap<Integer, TreeMap<Integer, Integer>> mapping;
+    Map<Integer, TreeMap<Integer, Integer>> mapping;
 
     // store the events from Monday-Sunday
-    ArrayList<LinkedList<Event>> schedule;
+    List<LinkedList<Event>> schedule;
 
     // the total number of events in the schedule
     int numberOfEvent;
-
-
+    
+    //all the event in the schedule
+    Set<String> allEventsName;
+    
+    
     public Schedule() {
         mapping = new HashMap<>();
         schedule = new ArrayList<>();
+        allEventsName = new HashSet<>();
         numberOfEvent = 0;
 
         // Monday to Sunday (0 to 6)
@@ -32,7 +36,7 @@ public class Schedule {
             return false;
         }
 
-        DayOfWeek[] eventDayInWeek = newEvent.getDayInWeek();
+        List<DayOfWeek> eventDayInWeek = newEvent.getDayOfWeek();
 
         for (DayOfWeek weekDay : eventDayInWeek) {
             int day = weekDay.getDayNumber();
@@ -45,15 +49,17 @@ public class Schedule {
             schedule.get(day).add(newEvent);
             Collections.sort(schedule.get(day));
         }
-
+        
+        allEventsName.add(newEvent.getName());
         numberOfEvent++;
         return true;
     }
 
 
     private boolean checkAvailibity(Event newEvent) {
-        DayOfWeek[] eventDayInWeek = newEvent.getDayInWeek();
-
+        if (allEventsName.contains(newEvent.getName())) return false;
+        
+        List<DayOfWeek> eventDayInWeek = newEvent.getDayOfWeek();
         for (DayOfWeek weekDay : eventDayInWeek) {
             int day = weekDay.getDayNumber();
             TreeMap<Integer, Integer> currentDay = mapping.get(day);
