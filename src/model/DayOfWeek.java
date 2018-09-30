@@ -1,5 +1,4 @@
-package com.schedulebuilder.model;
-
+package model;
 /**
  * Enum type for day of week and values associated with them.
  * MONDAY (0) -> SUNDAY(6)
@@ -98,5 +97,13 @@ public enum DayOfWeek {
         }
     }
     
+    /**
+     * @return every day of a week in array
+     */
+    public static DayOfWeek[] arrayDayOfWeek() {
+        return new DayOfWeek[] { DayOfWeek.MONDAY,
+            DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY,
+            DayOfWeek.FRIDAY, DayOfWeek.SATURDAY, DayOfWeek.SUNDAY};
+    }
     
 }

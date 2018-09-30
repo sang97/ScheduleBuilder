@@ -1,13 +1,11 @@
-package com.schedulebuilder.test;
-
+package test;
 import student.TestCase;
 import java.util.*;
-
-import com.schedulebuilder.generator.ScheduleGenerator;
-import com.schedulebuilder.model.Event;
-import com.schedulebuilder.model.Course;
-import com.schedulebuilder.model.DayOfWeek;
-import com.schedulebuilder.model.Interval;
+import generator.ScheduleGenerator;
+import model.Course;
+import model.DayOfWeek;
+import model.Event;
+import model.Interval;
 
 public class GeneratorTest extends TestCase {
     ScheduleGenerator sg;
@@ -26,7 +24,7 @@ public class GeneratorTest extends TestCase {
         Event cs4444 = new Course("CS 4444", new Interval(1300, 1400),
             new DayOfWeek[] { DayOfWeek.MONDAY });
         Event cs4804 = new Course("CS 4804", new Interval(1325, 1415),
-            new DayOfWeek[] { DayOfWeek.MONDAY });
+            new DayOfWeek[] { DayOfWeek.MONDAY, DayOfWeek.WEDNESDAY });
         Event cs3214 = new Course("CS 3214", new Interval(1600, 1715),
             new DayOfWeek[] { DayOfWeek.MONDAY, DayOfWeek.WEDNESDAY });
 
@@ -40,10 +38,10 @@ public class GeneratorTest extends TestCase {
         sg.setEventList(courseList);
         sg.generateSchedule();
 
-        System.out.println(sg.generator.size());
+        System.out.println(sg.getAllSchedule().size());
 
-        for (int i = 0; i < sg.generator.size(); i++) {
-            System.out.println(sg.generator.get(i).toString());
+        for (int i = 0; i < sg.getAllSchedule().size(); i++) {
+            System.out.println(sg.getAllSchedule().get(i).toString());
         }
     }
 

@@ -1,13 +1,11 @@
-package com.schedulebuilder.model;
-
+package model;
 /**
  * Use to represent academic term like Spring 2018, Fall 2018
  * 
  * @author Sang Nguyen
  *
  */
-
- public class AcademicTerm implements Comparable<AcademicTerm> {
+public class AcademicTerm implements Comparable<AcademicTerm> {
     private String season;
     private Integer year;
 

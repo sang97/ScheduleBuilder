@@ -1,14 +1,12 @@
-package com.schedulebuilder.generator;
-
+package generator;
 import java.util.*;
-
-import com.schedulebuilder.model.Event;
-import com.schedulebuilder.model.Schedule;
+import model.Event;
+import model.Schedule;
 
 public class ScheduleGenerator {
-    public List<Schedule> generator;
-    List<Event> eventList;
-    HashSet<Schedule> set;
+    private List<Schedule> generator;
+    private List<Event> eventList;
+    private HashSet<Schedule> set;
     
     
     public ScheduleGenerator() {
@@ -60,5 +58,9 @@ public class ScheduleGenerator {
     
     public void setEventList(List<Event> newEventList) {
         eventList = newEventList;
+    }
+    
+    public List<Schedule> getAllSchedule() {
+        return generator;
     }
 }
