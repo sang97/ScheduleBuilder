@@ -1,3 +1,4 @@
+package model;
 import java.util.*;
 
 /**
@@ -89,5 +90,17 @@ public class Instructor {
             gpaForCourses.remove(removeCourse);
         }
     }
-
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) 
+            return false;
+        Instructor instructor = (Instructor) obj;
+        
+        return name.equals(instructor.getName());
     }
+    
+}

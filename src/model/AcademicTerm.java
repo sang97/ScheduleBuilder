@@ -1,3 +1,4 @@
+package model;
 /**
  * Use to represent academic term like Spring 2018, Fall 2018
  * 

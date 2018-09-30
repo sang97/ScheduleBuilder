@@ -1,3 +1,4 @@
+package model;
 /**
  * represents the time interval
  * 

@@ -1,5 +1,11 @@
+package test;
 import student.TestCase;
 import java.util.*;
+import generator.ScheduleGenerator;
+import model.Course;
+import model.DayOfWeek;
+import model.Event;
+import model.Interval;
 
 public class GeneratorTest extends TestCase {
     ScheduleGenerator sg;
@@ -32,10 +38,10 @@ public class GeneratorTest extends TestCase {
         sg.setEventList(courseList);
         sg.generateSchedule();
 
-        System.out.println(sg.generator.size());
+        System.out.println(sg.getAllSchedule().size());
 
-        for (int i = 0; i < sg.generator.size(); i++) {
-            System.out.println(sg.generator.get(i).toString());
+        for (int i = 0; i < sg.getAllSchedule().size(); i++) {
+            System.out.println(sg.getAllSchedule().get(i).toString());
         }
     }
 
