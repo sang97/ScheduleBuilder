@@ -1,3 +1,5 @@
+package com.schedulebuilder.model;
+
 /**
  * Enum type for day of week and values associated with them.
  * MONDAY (0) -> SUNDAY(6)

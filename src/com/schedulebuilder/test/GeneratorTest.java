@@ -1,5 +1,13 @@
+package com.schedulebuilder.test;
+
 import student.TestCase;
 import java.util.*;
+
+import com.schedulebuilder.generator.ScheduleGenerator;
+import com.schedulebuilder.model.Event;
+import com.schedulebuilder.model.Course;
+import com.schedulebuilder.model.DayOfWeek;
+import com.schedulebuilder.model.Interval;
 
 public class GeneratorTest extends TestCase {
     ScheduleGenerator sg;

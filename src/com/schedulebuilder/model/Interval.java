@@ -1,3 +1,5 @@
+package com.schedulebuilder.model;
+
 /**
  * represents the time interval
  * 

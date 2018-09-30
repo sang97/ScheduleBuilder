@@ -1,3 +1,4 @@
+package com.schedulebuilder.model;
 
 public class CourseInfo {
     private String name;

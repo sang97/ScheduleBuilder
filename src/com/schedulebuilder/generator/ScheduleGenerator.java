@@ -1,7 +1,12 @@
+package com.schedulebuilder.generator;
+
 import java.util.*;
 
+import com.schedulebuilder.model.Event;
+import com.schedulebuilder.model.Schedule;
+
 public class ScheduleGenerator {
-    List<Schedule> generator;
+    public List<Schedule> generator;
     List<Event> eventList;
     HashSet<Schedule> set;
     

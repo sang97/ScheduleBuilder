@@ -1,3 +1,5 @@
+package com.schedulebuilder.model;
+
 /**
  * Event interface
  * 

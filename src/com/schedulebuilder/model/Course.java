@@ -1,3 +1,4 @@
+package com.schedulebuilder.model;
 
 public class Course implements Event {
     private int crn;
