@@ -18,7 +18,7 @@ public class GeneratorTest extends TestCase {
         Event cs4444 = new Course("CS 4444", new Interval(1300, 1400),
             new DayOfWeek[] { DayOfWeek.MONDAY });
         Event cs4804 = new Course("CS 4804", new Interval(1325, 1415),
-            new DayOfWeek[] { DayOfWeek.MONDAY });
+            new DayOfWeek[] { DayOfWeek.MONDAY, DayOfWeek.WEDNESDAY });
         Event cs3214 = new Course("CS 3214", new Interval(1600, 1715),
             new DayOfWeek[] { DayOfWeek.MONDAY, DayOfWeek.WEDNESDAY });
 

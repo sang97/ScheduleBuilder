@@ -132,9 +132,7 @@ public class Schedule {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        DayOfWeek[] dayOfWeek = new DayOfWeek[] { DayOfWeek.MONDAY,
-            DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY,
-            DayOfWeek.FRIDAY, DayOfWeek.SATURDAY, DayOfWeek.SUNDAY};
+        DayOfWeek[] dayOfWeek = DayOfWeek.arrayDayOfWeek();
         for (int i = 0; i < 7; i++) {
             sb.append(dayOfWeek[i].toStringShortForm() + ": ");
             LinkedList<Event> currDay = schedule.get(i);

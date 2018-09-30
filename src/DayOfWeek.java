@@ -96,5 +96,13 @@ public enum DayOfWeek {
         }
     }
     
+    /**
+     * @return every day of a week in array
+     */
+    public static DayOfWeek[] arrayDayOfWeek() {
+        return new DayOfWeek[] { DayOfWeek.MONDAY,
+            DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY,
+            DayOfWeek.FRIDAY, DayOfWeek.SATURDAY, DayOfWeek.SUNDAY};
+    }
     
 }
