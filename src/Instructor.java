@@ -1,79 +1,94 @@
 import java.util.*;
 
 /**
- * this class used to represent an instructor 
+ * this class used to represent an instructor
+ * 
  * @author Sang Nguyen
  * @version 1.0
  */
 
-
 public class Instructor {
     private String name;
-    
+
     private String description;
-    
-    private CourseInfo[] courseTeach;
-    
-    private int overallGPA;
-    
+
+    private Integer overallGPA;
+
+    private List<CourseInfo> courseTeach;
+
     private Map<CourseInfo, Integer> gpaForCourses;
-    
+
     private Map<AcademicTerm, Integer> gpaForTerms;
-    
+
+
     private Instructor(String name) {
         this.name = name;
+        courseTeach = new ArrayList<CourseInfo>();
         gpaForCourses = new HashMap<CourseInfo, Integer>();
         gpaForTerms = new TreeMap<AcademicTerm, Integer>();
     }
+
 
     public String getName() {
         return name;
     }
 
+
     public void setName(String name) {
         this.name = name;
     }
+
 
     public String getDescription() {
         return description;
     }
 
+
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public CourseInfo[] getCourseTeach() {
+
+    public List<CourseInfo> getCourseTeach() {
         return courseTeach;
     }
 
-    public void setCourseTeach(CourseInfo[] courseTeach) {
-        this.courseTeach = courseTeach;
-    }
 
-    public int getOverallGPA() {
+    public Integer getOverallGPA() {
         return overallGPA;
     }
 
-    public void setOverallGPA(int overallGPA) {
+
+    public void setOverallGPA(Integer overallGPA) {
         this.overallGPA = overallGPA;
     }
 
-    public Map<CourseInfo, Integer> getGpaForCourses() {
-        return gpaForCourses;
-    }
-
-    public void setGpaForCourses(Map<CourseInfo, Integer> gpaForCourses) {
-        this.gpaForCourses = gpaForCourses;
-    }
-
-    public Map<AcademicTerm, Integer> getGpaForTerms() {
-        return gpaForTerms;
-    }
-
-    public void setGpaForTerms(Map<AcademicTerm, Integer> gpaForTerms) {
-        this.gpaForTerms = gpaForTerms;
+    /**
+     * add new course with no average GPA
+     */
+    public void addCourse(CourseInfo newCourse) {
+        this.addCourse(newCourse, null);
     }
     
-    
+    /**
+     * add new course with average GPA
+     */
+    public void addCourse(CourseInfo newCourse, Integer averageGPA) {
+        if (!courseTeach.contains(newCourse)) {
+            courseTeach.add(newCourse);
+            gpaForCourses.put(newCourse, averageGPA);
+        }
+    }
+
+    /**
+     * remove course 
+     */
+    public void removeCourse(CourseInfo removeCourse) {
+        if (courseTeach.contains(removeCourse)) {
+            courseTeach.remove(removeCourse);
+            gpaForCourses.remove(removeCourse);
+        }
+    }
+
     
 }

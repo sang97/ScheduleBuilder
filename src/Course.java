@@ -2,18 +2,19 @@
 public class Course implements Event {
     private int crn;
     private String name;
-    private String title;
     private String type;
-    private int courseHour;
     private int seats;
     private int capacity;
-    private String instructor;
     private DayOfWeek[] days;
     private Interval time;
     private String location;
     private String exam;
 
-    private int priority;
+    private int priority; //used to generate schedule
+
+    private Instructor instructor;
+    private CourseInfo courseInfo;
+
 
     public Course(String courseName, Interval courseInterval) {
         this(courseName, courseInterval, new DayOfWeek[] { DayOfWeek.MONDAY },
