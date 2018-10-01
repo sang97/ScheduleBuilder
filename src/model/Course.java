@@ -203,7 +203,7 @@ public class Course implements Event {
         
         Course course = (Course) obj;
         
-        return name.equals(course.getName()) && time.equals(course.getTime());
+        return name.equals(course.getName());
     }
     
     
