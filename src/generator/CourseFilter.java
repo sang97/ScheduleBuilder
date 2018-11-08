@@ -4,17 +4,30 @@ import java.util.*;
 import model.Event;
 
 public class CourseFilter {
-    
-    public static List<Event> filterClassWithName(List<Event> allCourses, List<String> nameList) {
-        List<Event> courseList = new ArrayList<Event>();
-        
+
+    /**
+     * Add all the course with a given list of name
+     * 
+     * @param allCourses
+     *            the data of all course
+     * @param nameList
+     *            name list of the course
+     * @param courseList
+     *            list of course
+     */
+    public static void filterClassWithCourseName(
+        List<Event> allCourses,
+        List<String> nameList,
+        List<Event> courseList) {
         for (Event course : allCourses) {
             String str = course.getName();
-            
+
             if (nameList.contains(str)) {
                 courseList.add(course);
             }
         }
-        return courseList;
     }
+    
+    
+
 }

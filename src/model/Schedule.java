@@ -5,7 +5,7 @@ public class Schedule {
     // key is day in a week
     // value is a tree map where we keep track of start and end time of an
     // event so that none of them is duplicated
-    Map<Integer, TreeMap<Integer, Integer>> mapping;
+    Map<Integer, TreeMap<Integer, Integer>> availableTime;
 
     // store the events from Monday-Sunday
     List<LinkedList<Event>> schedule;
@@ -16,16 +16,19 @@ public class Schedule {
     //all the event in the schedule
     Set<String> allEventsName;
     
+    public int getNumberOfEvent() {
+        return numberOfEvent;
+    }
     
     public Schedule() {
-        mapping = new HashMap<>();
+        availableTime = new HashMap<>();
         schedule = new ArrayList<>();
         allEventsName = new HashSet<>();
         numberOfEvent = 0;
 
         // Monday to Sunday (0 to 6)
         for (int i = 0; i < 7; i++) {
-            mapping.put(i, new TreeMap<Integer, Integer>());
+            availableTime.put(i, new TreeMap<Integer, Integer>());
             schedule.add(new LinkedList<Event>());
         }
     }
@@ -36,11 +39,11 @@ public class Schedule {
             return false;
         }
 
-        List<DayOfWeek> eventDayInWeek = newEvent.getDayOfWeek();
+        List<DayOfWeek> eventDayInWeek = newEvent.getDayOfEvent();
 
         for (DayOfWeek weekDay : eventDayInWeek) {
             int day = weekDay.getDayNumber();
-            TreeMap<Integer, Integer> currentDay = mapping.get(day);
+            TreeMap<Integer, Integer> currentDay = availableTime.get(day);
             Interval newInterval = newEvent.getTime();
             int start = newInterval.startTime;
             int end = newInterval.endTime;
@@ -59,10 +62,10 @@ public class Schedule {
     private boolean checkAvailibity(Event newEvent) {
         if (allEventsName.contains(newEvent.getName())) return false;
         
-        List<DayOfWeek> eventDayInWeek = newEvent.getDayOfWeek();
+        List<DayOfWeek> eventDayInWeek = newEvent.getDayOfEvent();
         for (DayOfWeek weekDay : eventDayInWeek) {
             int day = weekDay.getDayNumber();
-            TreeMap<Integer, Integer> currentDay = mapping.get(day);
+            TreeMap<Integer, Integer> currentDay = availableTime.get(day);
             Interval newInterval = newEvent.getTime();
             int start = newInterval.startTime;
             int end = newInterval.endTime;
@@ -83,7 +86,7 @@ public class Schedule {
      * public void deleteEvent(Event event) {
      * DayOfWeek[] eventDayInWeek = event.getDayInWeek();
      * for (int day : eventDayInWeek) {
-     * TreeMap<Integer, Integer> currentDay = mapping.get(day);
+     * TreeMap<Integer, Integer> currentDay = availableTime.get(day);
      * Interval interval = event.getInterval();
      * currentDay.remove(interval.startTime);
      * schedule.get(day).remove(event);
@@ -100,7 +103,7 @@ public class Schedule {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((mapping == null) ? 0 : mapping.hashCode());
+        result = prime * result + ((availableTime == null) ? 0 : availableTime.hashCode());
         result = prime * result + numberOfEvent;
         result = prime * result + ((schedule == null)
             ? 0
@@ -118,11 +121,11 @@ public class Schedule {
         if (getClass() != obj.getClass())
             return false;
         Schedule other = (Schedule)obj;
-        if (mapping == null) {
-            if (other.mapping != null)
+        if (availableTime == null) {
+            if (other.availableTime != null)
                 return false;
         }
-        else if (!mapping.equals(other.mapping))
+        else if (!availableTime.equals(other.availableTime))
             return false;
         if (numberOfEvent != other.numberOfEvent)
             return false;
@@ -139,8 +142,8 @@ public class Schedule {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        DayOfWeek[] dayOfWeek = DayOfWeek.arrayDayOfWeek();
-        for (int i = 0; i < 7; i++) {
+        DayOfWeek[] dayOfWeek = DayOfWeek.arrayOfWeek();
+        for (int i = 0; i < 5; i++) {
             sb.append(dayOfWeek[i].toStringShortForm() + ": ");
             LinkedList<Event> currDay = schedule.get(i);
 

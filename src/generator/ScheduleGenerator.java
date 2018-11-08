@@ -7,8 +7,8 @@ import model.Schedule;
 public class ScheduleGenerator {
     private List<Schedule> generator;
     private List<Event> eventList;
-    private Set<Schedule> set;
-    private Set<Event> distinctEvent;
+    private Set<Schedule> allSchedule;
+    private Set<Event> eventAdded;
 
     public ScheduleGenerator() {
         this(null);
@@ -23,8 +23,8 @@ public class ScheduleGenerator {
     public void init(List<Event> newEventList) {
         generator = new ArrayList<Schedule>();
         eventList = newEventList;
-        set = new HashSet<Schedule>();
-        distinctEvent = new HashSet<Event>();
+        allSchedule = new HashSet<Schedule>();
+        eventAdded = new HashSet<Event>();
     }
 
 
@@ -35,12 +35,12 @@ public class ScheduleGenerator {
 
     private void findDistinctCourse(List<Event> courses) {
         for (Event course : courses) {
-            distinctEvent.add(course);
+            eventAdded.add(course);
         }
     }
 
     private void createPermutation(List<Event> tempList, int num) {
-        if (num == distinctEvent.size()) {
+        if (num == eventAdded.size()) {
             // a new permutation is generated, start adding event to the
             // schedule
 
@@ -54,9 +54,9 @@ public class ScheduleGenerator {
             }
 
             // check if we already have the schedule in our schedule list
-            if (!set.contains(tempSchedule)) {
+            if (!allSchedule.contains(tempSchedule)) {
                 generator.add(tempSchedule);
-                set.add(tempSchedule);
+                allSchedule.add(tempSchedule);
             }
         }
         else {
@@ -82,6 +82,15 @@ public class ScheduleGenerator {
 
 
     public List<Schedule> getAllSchedule() {
+        Collections.sort(generator, new Comparator<Schedule>() {
+
+            @Override
+            public int compare(Schedule s1, Schedule s2) {
+                // TODO Auto-generated method stub
+                return s2.getNumberOfEvent() - s1.getNumberOfEvent();
+            }
+        
+        });
         return generator;
     }
 }

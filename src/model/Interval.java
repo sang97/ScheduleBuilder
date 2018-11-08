@@ -63,6 +63,26 @@ public class Interval implements Comparable<Interval> {
         return true;
     }
     
-    
-    
+    public static int getIntegerFromTime(String time) {
+        int hours = 0;
+        int minutes = 0;
+        
+        if (time.length() == 7) {
+            hours = Integer.valueOf(time.substring(0, 2));
+            time = time.substring(3);
+        }
+        else {
+            hours = Integer.valueOf(time.substring(0, 1));
+            time = time.substring(2);
+        }
+        
+        minutes = Integer.valueOf(time.substring(0, 2));
+        time = time.substring(2);
+        
+        if (time.equals("PM") && hours != 12) {
+            hours += 12;
+        }
+        
+        return hours * 100 + minutes;
+    }
 }

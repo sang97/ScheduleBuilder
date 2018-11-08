@@ -66,7 +66,7 @@ public class HtmlParser {
             List<DayOfWeek> classDays = new ArrayList<>();
             
             for (char c : days.toCharArray()) {
-                DayOfWeek temp = DayOfWeek.convertToDayOfWeekType(c);
+                DayOfWeek temp = DayOfWeek.convertIntToDayOfWeekType(c);
                 if (temp == null && classDays.size() == 0) break;
                 else if (temp != null) {
                     classDays.add(temp);
@@ -83,8 +83,8 @@ public class HtmlParser {
                 begin = entries.get(9).text();
                 end = entries.get(10).text();
                 
-                int startTime = getIntegerFromTime(begin);
-                int endTime = getIntegerFromTime(end);
+                int startTime = Interval.getIntegerFromTime(begin);
+                int endTime = Interval.getIntegerFromTime(end);
                 
                 Interval time = new Interval(startTime, endTime);
                 
@@ -103,30 +103,6 @@ public class HtmlParser {
         }
     }
     
-    private int getIntegerFromTime(String time) {
-        int hours = 0;
-        int minutes = 0;
-        
-        if (time.length() == 7) {
-            hours = Integer.valueOf(time.substring(0, 2));
-            time = time.substring(3);
-        }
-        else {
-            hours = Integer.valueOf(time.substring(0, 1));
-            time = time.substring(2);
-        }
-        
-        minutes = Integer.valueOf(time.substring(0, 2));
-        time = time.substring(2);
-        
-        if (time.equals("PM") && hours != 12) {
-            hours += 12;
-        }
-        
-        return hours * 100 + minutes;
-    }
-
-
     public void beginParse() {
         try {
             File input = new File("extras/timetable.html");

@@ -23,13 +23,15 @@ public class Test extends TestCase {
         
         List<String> nameList = new ArrayList<String>();
         
-        nameList.add("CS-4804");
-        nameList.add("CS-3604");
-        nameList.add("CS-3704");
         nameList.add("CS-3214");
-        nameList.add("CS-3304");
+        ///nameList.add("CS-3114");
+        //nameList.add("CS-4104");
+        //nameList.add("CS-4604");
+        //nameList.add("CS-3704");
         
-        List<Event> courseList = CourseFilter.filterClassWithName(allCourses, nameList);
+        List<Event> courseList = new ArrayList<Event>();
+        
+        CourseFilter.filterClassWithCourseName(allCourses, nameList, courseList);
         
         sg.setEventList(courseList);
         

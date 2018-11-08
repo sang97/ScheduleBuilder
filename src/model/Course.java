@@ -31,14 +31,14 @@ public class Course implements Event {
 
 
     @Override
-    public List<DayOfWeek> getDayOfWeek() {
+    public List<DayOfWeek> getDayOfEvent() {
         return days;
     }
 
 
     @Override
     public String toString() {
-        return name + " " + time.startTime + "-" + time.endTime;
+        return crn + " " + name + " " + time.startTime + "-" + time.endTime;
     }
 
 

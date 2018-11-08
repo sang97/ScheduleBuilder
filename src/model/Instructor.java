@@ -12,7 +12,9 @@ public class Instructor {
     private String name;
 
     private String description;
-
+    
+    
+    
     private Integer overallGPA;
 
     private List<CourseInfo> courseTeach;

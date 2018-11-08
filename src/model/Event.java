@@ -13,9 +13,6 @@ public interface Event extends Comparable<Event> {
 
     public Interval getTime();
 
-    public List<DayOfWeek> getDayOfWeek();
+    public List<DayOfWeek> getDayOfEvent();
     
-    public boolean equals(Object obj);
-    
-    public int hashCode();
 }

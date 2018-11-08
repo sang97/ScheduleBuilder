@@ -55,32 +55,13 @@ public enum DayOfWeek {
      * short form
      */
     public String toStringShortForm() {
-        switch(this.dayNumber) {
-            case 0:
-                return "Mon";
-            case 1:
-                return "Tue";
-            case 2:
-                return "Wed";
-            case 3:
-                return "Thu";
-            case 4:
-                return "Fri";
-            case 5:
-                return "Sat";
-            case 6:
-                return "Sun";
-            default:
-                return null;
-                
-                
-        }
+        return toString().substring(0,3);
     }
     
     /**
      * convert letter to DayOfWeek type
      */
-    public static DayOfWeek convertToDayOfWeekType(char letter) {
+    public static DayOfWeek convertIntToDayOfWeekType(char letter) {
         switch(letter) {
             case 'M':
                 return DayOfWeek.MONDAY;
@@ -100,7 +81,7 @@ public enum DayOfWeek {
     /**
      * @return every day of a week in array
      */
-    public static DayOfWeek[] arrayDayOfWeek() {
+    public static DayOfWeek[] arrayOfWeek() {
         return new DayOfWeek[] { DayOfWeek.MONDAY,
             DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY,
             DayOfWeek.FRIDAY, DayOfWeek.SATURDAY, DayOfWeek.SUNDAY};
